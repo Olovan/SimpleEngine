@@ -29,7 +29,11 @@ int main()
     Entity testEntity(1.2,2.2);
     TestComp* comp = new TestComp(4);
     testEntity.addComponent( comp );
-    testEntity.getComponent<TestComp>()->shout();
+    comp = testEntity.getComponent<TestComp>();
+    if(comp == nullptr)
+    {
+        cout << "It's null" << endl;
+    }
     cout << "Position: " << testEntity.position.x << testEntity.position.y << endl;
     return 0;
 }

@@ -31,9 +31,7 @@ public:
         {
             if(typeid(component) == typeid(T))
             {
-                std::cout << "Still working" << std::endl;
                 result = (T*)component;
-                std::cout << "Still working" << std::endl;
             }
         }
         return result;
