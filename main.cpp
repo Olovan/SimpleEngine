@@ -18,8 +18,7 @@ public:
     }
     void shout()
     {
-        std::cout << "It seems to work" << std::endl;
-        printf("Number is %i",number);
+        printf("Number is %i \n",number);
     }
 };
 
@@ -30,10 +29,8 @@ int main()
     TestComp* comp = new TestComp(4);
     testEntity.addComponent( comp );
     comp = testEntity.getComponent<TestComp>();
-    if(comp == nullptr)
-    {
-        cout << "It's null" << endl;
-    }
-    cout << "Position: " << testEntity.position.x << testEntity.position.y << endl;
+    if(comp)
+        comp->shout();
+    cout << "Position: " << testEntity.position.x << " , " << testEntity.position.y << endl;
     return 0;
 }

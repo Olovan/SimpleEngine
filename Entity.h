@@ -25,16 +25,21 @@ public:
     //Templates
     template <class T> T* getComponent()
     {
-        std::cout << "Still working" << std::endl;
         T* result = nullptr; //so it will return a null if the component isn't found
         for(Component* component : components)
         {
-            if(typeid(component) == typeid(T))
+            T* result = dynamic_cast<T*>(component);
+            if(result != nullptr)
             {
-                result = (T*)component;
+                return result;
             }
         }
-        return result;
+        return nullptr;
+    }
+
+    template <class T> T* createComponent()
+    {
+        return nullptr;
     }
 };
 
