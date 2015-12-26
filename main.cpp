@@ -31,5 +31,6 @@ int main()
     if(comp)
         comp->shout();
     cout << "Position: " << testEntity.position.x << " , " << testEntity.position.y << endl;
+    getchar();
     return 0;
 }
