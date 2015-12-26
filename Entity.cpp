@@ -14,13 +14,13 @@ Entity::Entity(float iX, float iY)
 
 void Entity::sendMessage(std::string iMessage)
 {
-    for(Component* component : components)
+    for(std::shared_ptr<Component> component : components)
     {
-        component->receiveMessage(iMessage);
+        component.get()->receiveMessage(iMessage);
     }
 }
 
-void Entity::addComponent(Component* iComponent)
+void Entity::addComponent(std::shared_ptr<Component> iComponent)
 {
     components.push_back(iComponent);
 }

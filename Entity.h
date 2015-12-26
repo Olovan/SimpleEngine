@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <string>
+#include <memory>
 #include <iostream>
 #include "Component.h"
 
@@ -16,19 +17,18 @@ public:
 
     //Variables
     sf::Vector2f position;
-    std::vector<Component*> components;
+    std::vector<std::shared_ptr<Component>> components;
 
     //Methods
     void sendMessage(std::string iMessage);
-    void addComponent(Component* iComponent);
+    void addComponent(std::shared_ptr<Component> iComponent);
 
     //Templates
     template <class T> T* getComponent()
     {
-        T* result = nullptr; //so it will return a null if the component isn't found
-        for(Component* component : components)
+        for(std::shared_ptr<Component> component : components)
         {
-            T* result = dynamic_cast<T*>(component);
+            T* result = dynamic_cast<T*>(component.get());
             if(result != nullptr)
             {
                 return result;
@@ -39,7 +39,9 @@ public:
 
     template <class T> T* createComponent()
     {
-        return nullptr;
+        std::shared_ptr<T> newComponent = std::make_shared<T>();
+        components.push_back(newComponent);
+        return newComponent.get();
     }
 };
 

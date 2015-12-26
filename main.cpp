@@ -26,9 +26,8 @@ int main()
 {
     cout << "Hello world!" << endl;
     Entity testEntity(1.2,2.2);
-    TestComp* comp = new TestComp(4);
-    testEntity.addComponent( comp );
-    comp = testEntity.getComponent<TestComp>();
+    testEntity.addComponent(std::make_shared<TestComp>(24));
+    TestComp* comp = testEntity.getComponent<TestComp>();
     if(comp)
         comp->shout();
     cout << "Position: " << testEntity.position.x << " , " << testEntity.position.y << endl;
