@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Entity.h"
 #include "Component.h"
+#include "Vector2.h"
+#include "Physics.h"
 
 using namespace std;
 
@@ -8,14 +10,7 @@ class TestComp : public Component
 {
 public:
     int number = 0;
-    TestComp()
-    {
 
-    }
-    TestComp(int iNumber)
-    {
-        number = iNumber;
-    }
     void shout()
     {
         printf("Number is %i \n",number);
@@ -24,13 +19,26 @@ public:
 
 int main()
 {
-    cout << "Hello world!" << endl;
-    Entity testEntity(1.2,2.2);
-    testEntity.addComponent(std::make_shared<TestComp>(24));
-    TestComp* comp = testEntity.getComponent<TestComp>();
-    if(comp)
-        comp->shout();
-    cout << "Position: " << testEntity.position.x << " , " << testEntity.position.y << endl;
+   //TEST CODE
+   Vector2 v1(5,2);
+   Vector2 v2(sf::Vector2f(2,7));
+
+    cout << (v1+v2).print() << endl;
+    cout << (v1-v2).print() << endl;
+    cout << (v1*v2).print() << endl;
+    cout << (v1/v2).print() << endl;
+
+    Entity* entity1 = new Entity(0,0);
+    entity1->addComponent(std::make_shared<Physics>(entity1));
+    Physics* physComp = entity1->getComponent<Physics>();
+    physComp->velocity = Vector2(1,1);
+    physComp->update(1);
+    cout << entity1->position.print() << endl;
+    physComp->update(1);
+    cout << entity1->position.print() << endl;
+    physComp->update(1);
+    cout << entity1->position.print() << endl;
+
     getchar();
     return 0;
 }

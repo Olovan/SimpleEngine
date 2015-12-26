@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include "Component.h"
 
-Entity::Entity(sf::Vector2f iPosition)
+Entity::Entity(Vector2 iPosition)
 {
     position = iPosition;
 }

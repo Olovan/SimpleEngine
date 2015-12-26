@@ -1,7 +1,7 @@
 #ifndef ENTITY_H_INCLUDED
 #define ENTITY_H_INCLUDED
 
-#include <SFML/Graphics.hpp>
+#include "Vector2.h"
 #include <vector>
 #include <string>
 #include <memory>
@@ -12,11 +12,11 @@ class Entity {
 
 public:
     //Constructors
-    Entity(sf::Vector2f iPosition);
+    Entity(Vector2 iPosition);
     Entity(float iX, float iY);
 
     //Variables
-    sf::Vector2f position;
+    Vector2 position;
     std::vector<std::shared_ptr<Component>> components;
 
     //Methods
@@ -41,6 +41,7 @@ public:
     {
         std::shared_ptr<T> newComponent = std::make_shared<T>();
         components.push_back(newComponent);
+        newComponent.get()->start(); //Call Start Function
         return newComponent.get();
     }
 };
