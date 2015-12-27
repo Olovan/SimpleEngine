@@ -9,7 +9,7 @@ class Entity;
 class Physics : public Component
 {
     public:
-        Physics(Entity* iOwner);
+        Physics(Entity* iEntity);
         bool gravityEnabled = false;
         Vector2 velocity{0,0};
         void update(float deltaTime);
