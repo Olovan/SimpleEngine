@@ -1,0 +1,22 @@
+#ifndef RENDERER_H
+#define RENDERER_H
+
+#include "Component.h"
+#include "Vector2.h"
+#include <SFML/Graphics.hpp>
+
+
+class Renderer : public Component
+{
+    public:
+        Renderer(Entity *entity, Vector2 iDimensions );
+
+        Vector2 dimensions;
+        sf::RectangleShape shape;
+        void update(float deltaTime);
+    protected:
+
+    private:
+};
+
+#endif // RENDERER_H
