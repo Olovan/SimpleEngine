@@ -37,9 +37,17 @@ public:
         return nullptr;
     }
 
-    template <class T> T* createComponent()
+    template<class T>T* createComponent()
     {
         std::shared_ptr<T> newComponent = std::make_shared<T>();
+        components.push_back(newComponent);
+        newComponent.get()->start(); //Call Start Function
+        return newComponent.get();
+    }
+
+    template <class T, class... ARG> T* createComponent(ARG... args)
+    {
+        std::shared_ptr<T> newComponent = std::make_shared<T>(args...);
         components.push_back(newComponent);
         newComponent.get()->start(); //Call Start Function
         return newComponent.get();

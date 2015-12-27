@@ -29,14 +29,14 @@ int main()
     cout << (v1/v2).print() << endl;
 
     Entity* entity1 = new Entity(0,0);
-    entity1->addComponent(std::make_shared<Physics>(entity1));
+    entity1->createComponent<Physics>(entity1);
     Physics* physComp = entity1->getComponent<Physics>();
     physComp->velocity = Vector2(1,1);
     physComp->update(1);
     cout << entity1->position.print() << endl;
     physComp->update(1);
     cout << entity1->position.print() << endl;
-    physComp->update(1);
+    physComp->update(.5);
     cout << entity1->position.print() << endl;
 
     getchar();
