@@ -3,6 +3,7 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "Renderer.h"
 
 class Window
 {
@@ -15,7 +16,7 @@ class Window
 
         //Methods
         void handleEvents();
-        void draw(); //TODO create Renderable component for window to draw
+        void draw(Renderer &renderer); //TODO create Renderable component for window to draw
         void display();
     protected:
     private:

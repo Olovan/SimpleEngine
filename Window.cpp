@@ -22,3 +22,8 @@ void Window::handleEvents()
         }
     }
 }
+
+void Window::draw(Renderer &iRenderer)
+{
+    _window.draw(iRenderer.shape);
+}
