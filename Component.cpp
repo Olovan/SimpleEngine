@@ -1,9 +1,9 @@
 #include "Component.h"
 #include "Entity.h"
 
-Component::Component(Entity* iOwner)
+Component::Component(Entity* iEntity)
 {
-    owner = iOwner;
+    entity = iEntity;
 }
 
 //All of these should be empty and overridden by the individual components as needed.

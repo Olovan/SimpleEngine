@@ -6,8 +6,8 @@ class Entity;
 
 class Component {
 public:
-    Entity* owner;
-    Component(Entity* iOwner);
+    Entity* entity;
+    Component(Entity* entity);
     virtual void receiveMessage(std::string iMessage);
     virtual void update(float deltaTime);
     virtual void start();
