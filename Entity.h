@@ -8,6 +8,8 @@
 #include <iostream>
 #include "Component.h"
 
+class Game;
+
 class Entity {
 
 public:
@@ -18,6 +20,7 @@ public:
     //Variables
     Vector2 position;
     std::vector<std::shared_ptr<Component>> components;
+    Game* game;
 
     //Methods
     void sendMessage(std::string iMessage);
