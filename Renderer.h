@@ -13,6 +13,7 @@ class Renderer : public Component
 
         Vector2 dimensions;
         sf::RectangleShape shape;
+        void start();
         void update(float deltaTime);
     protected:
 
