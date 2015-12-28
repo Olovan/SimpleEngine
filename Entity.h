@@ -24,7 +24,7 @@ public:
 
     //Methods
     void sendMessage(std::string iMessage);
-    void addComponent(std::shared_ptr<Component> iComponent);
+    void addComponent(std::shared_ptr<Component> iComponent); //Use createComponent to make new components. Only use addComponent to transfer ownership of existing components. Should avoid using addComponent in most cases
 
     //Templates
     template <class T> T* getComponent()
