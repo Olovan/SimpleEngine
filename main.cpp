@@ -7,29 +7,32 @@
         #include "Component.h"
             #include "Physics.h"
             #include "Renderer.h"
+            #include "CustomClasses.h"
 
 using namespace std;
-
-class TestComp : public Component
-{
-public:
-    int number = 0;
-
-    void shout()
-    {
-        printf("Number is %i \n",number);
-    }
-};
 
 int main()
 {
    //TEST CODE
    Game* game = new Game();
    Entity* currentEntity;
-   currentEntity = game->createEntity(Vector2(0,0));
+   currentEntity = game->createEntity(Vector2(645,478));
    currentEntity->createComponent<Physics>(currentEntity);
-   currentEntity->getComponent<Physics>()->velocity = Vector2(30,30);
+   currentEntity->getComponent<Physics>()->velocity = Vector2(80,80);
    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Red);
+   currentEntity->createComponent<BouncingSquare>(currentEntity);
+
+   currentEntity = game->createEntity(Vector2(200,178));
+   currentEntity->createComponent<Physics>(currentEntity);
+   currentEntity->getComponent<Physics>()->velocity = Vector2(140,280);
+   currentEntity->createComponent<Renderer>(currentEntity, Vector2(200,50), sf::Color::Yellow);
+   currentEntity->createComponent<BouncingSquare>(currentEntity);
+
+   currentEntity = game->createEntity(Vector2(40,678));
+   currentEntity->createComponent<Physics>(currentEntity);
+   currentEntity->getComponent<Physics>()->velocity = Vector2(440,80);
+   currentEntity->createComponent<Renderer>(currentEntity, Vector2(10,100), sf::Color::Cyan);
+   currentEntity->createComponent<BouncingSquare>(currentEntity);
 
     cout << "Number of Renderers: " << game->renderers.size() << endl;
     cout << "Number of Entities: " << game->entities.size() << endl;
@@ -38,8 +41,6 @@ int main()
     {
         game->update();
        // cout << 1 / game->clock.getElapsedTime().asSeconds() << " FPS" << endl;
-        if(currentEntity->position.x > 100)
-            game->deleteEntity(currentEntity);
     }
 
     getchar();

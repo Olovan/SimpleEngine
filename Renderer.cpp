@@ -5,7 +5,6 @@
 
 Renderer::Renderer(Entity* iEntity, Vector2 iDimensions) : Component(iEntity)
 {
-    std::cout << "I live!" << std::endl;
     dimensions = iDimensions;
     entity = iEntity;
     shape.setSize(sf::Vector2f(dimensions.x,dimensions.y));
@@ -13,20 +12,18 @@ Renderer::Renderer(Entity* iEntity, Vector2 iDimensions) : Component(iEntity)
 
 Renderer::Renderer(Entity *iEntity, Vector2 iDimensions, sf::Color iColor ) : Component(iEntity)
 {
-    std::cout << "I live!" << std::endl;
     dimensions = iDimensions;
     entity = iEntity;
     shape.setFillColor(iColor);
     shape.setSize(sf::Vector2f(dimensions.x,dimensions.y));
 }
 
-Renderer::~Renderer()
+Renderer::~Renderer() //Remove self from Game renderers set
 {
-    std::cout << "Should only see this once" << this << std::endl;
     entity->game->renderers.erase(this);
 }
 
-void Renderer::start()
+void Renderer::start() //insert self into Game renderers set
 {
     entity->game->renderers.insert(this);
 }
