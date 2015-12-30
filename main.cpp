@@ -26,19 +26,9 @@ int main()
    //TEST CODE
    Game* game = new Game();
    Entity* currentEntity;
-   Component* currentComponent;
    currentEntity = game->createEntity(Vector2(0,0));
    currentEntity->createComponent<Physics>(currentEntity);
    currentEntity->getComponent<Physics>()->velocity = Vector2(30,30);
-   currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Red);
-   currentEntity = game->createEntity(Vector2(400,400));
-   currentEntity->createComponent<Physics>(currentEntity);
-   currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Red);
-   currentEntity = game->createEntity(Vector2(0,0));
-   currentEntity->createComponent<Physics>(currentEntity);
-   currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Red);
-   currentEntity = game->createEntity(Vector2(0,0));
-   currentEntity->createComponent<Physics>(currentEntity);
    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Red);
 
     cout << "Number of Renderers: " << game->renderers.size() << endl;
@@ -47,6 +37,9 @@ int main()
     while (game->window.isOpen())
     {
         game->update();
+       // cout << 1 / game->clock.getElapsedTime().asSeconds() << " FPS" << endl;
+        if(currentEntity->position.x > 100)
+            game->deleteEntity(currentEntity);
     }
 
     getchar();

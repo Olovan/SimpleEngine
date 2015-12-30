@@ -9,9 +9,23 @@ Game::Game()
 Entity* Game::createEntity(Vector2 iPosition)
 {
     auto entity = std::make_shared<Entity>(iPosition);
-    entities.push_back(entity);
+    entities.insert(entity);
     entity.get()->game = this;
     return entity.get();
+}
+
+void Game::deleteEntity(Entity* iEntity)
+{
+    int i = 0;
+    for(auto entity : entities)
+    {
+        if(entity.get() == iEntity)
+        {
+            entities.erase(entity);
+            return;
+        }
+        i++;
+    }
 }
 
 void Game::update()
@@ -23,9 +37,9 @@ void Game::update()
     handleWindowEvents();
     //RENDER
     window.clear(sf::Color::Black);
-    for(std::shared_ptr<Renderer> renderer : renderers)
+    for(auto renderer : renderers)
     {
-        window.draw((*renderer.get()).shape);
+        window.draw((*renderer).shape);
     }
     window.display();
     //UPDATE

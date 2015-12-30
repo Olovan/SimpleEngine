@@ -4,6 +4,7 @@
 #include "Component.h"
 #include "Vector2.h"
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 
 class Renderer : public Component
@@ -11,6 +12,8 @@ class Renderer : public Component
     public:
         Renderer(Entity *entity, Vector2 iDimensions );
         Renderer(Entity *entity, Vector2 iDimensions, sf::Color iColor );
+        ~Renderer();
+
 
         Vector2 dimensions;
         sf::RectangleShape shape;

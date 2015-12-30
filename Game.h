@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <vector>
+#include <set>
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "Entity.h"
@@ -15,11 +16,12 @@ class Game
 
         sf::Clock clock;
         sf::RenderWindow window;
-        std::vector<std::shared_ptr<Renderer>> renderers; //Renderers register themselves here in their Start() method
-        std::vector<std::shared_ptr<Entity>> entities; //Entities get registered here whenever createEntity() is run
+        std::set<Renderer*> renderers; //Renderers register themselves here in their Start() method and unregister in their destructor
+        std::set<std::shared_ptr<Entity>> entities; //Entities get registered here whenever createEntity() is run
         //TODO Add collider Vector
 
         Entity* createEntity(Vector2 iPosition);
+        void deleteEntity(Entity* iEntity);
         void update();
         void handleWindowEvents();
     protected:
