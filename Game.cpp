@@ -28,6 +28,14 @@ void Game::deleteEntity(Entity* iEntity)
     }
 }
 
+void Game::start()
+{
+    for(auto entity : entities)
+    {
+        entity.get()->start();
+    }
+}
+
 void Game::update()
 {
     //CLOCK CODE

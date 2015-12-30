@@ -22,6 +22,7 @@ class Game
 
         Entity* createEntity(Vector2 iPosition);
         void deleteEntity(Entity* iEntity);
+        void start();
         void update();
         void handleWindowEvents();
     protected:

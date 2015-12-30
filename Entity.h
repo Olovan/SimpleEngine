@@ -24,6 +24,7 @@ public:
     Game* game;
 
     //Methods
+    void start();
     void update(float deltaTime);
     void sendMessage(std::string iMessage);
     void addComponent(std::shared_ptr<Component> iComponent); //Use createComponent to make new components. Only use addComponent to transfer ownership of existing components. Should avoid using addComponent in most cases
@@ -46,7 +47,6 @@ public:
     {
         std::shared_ptr<T> newComponent = std::make_shared<T>();
         components.push_back(newComponent);
-        newComponent.get()->start(); //Call Start Function
         return newComponent.get();
     }
 

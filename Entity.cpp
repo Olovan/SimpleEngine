@@ -12,6 +12,14 @@ Entity::Entity(float iX, float iY)
     position.y = iY;
 }
 
+void Entity::start()
+{
+    for(auto component : components)
+    {
+        component.get()->start();
+    }
+}
+
 void Entity::update(float deltaTime)
 {
     for(auto component : components)
