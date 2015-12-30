@@ -12,6 +12,14 @@ Entity::Entity(float iX, float iY)
     position.y = iY;
 }
 
+void Entity::update(float deltaTime)
+{
+    for(auto component : components)
+    {
+        component.get()->update(deltaTime);
+    }
+}
+
 void Entity::sendMessage(std::string iMessage)
 {
     for(std::shared_ptr<Component> component : components)

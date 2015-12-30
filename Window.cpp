@@ -23,7 +23,22 @@ void Window::handleEvents()
     }
 }
 
+void Window::clear(sf::Color color)
+{
+    _window.clear(color);
+}
+
 void Window::draw(Renderer &iRenderer)
 {
     _window.draw(iRenderer.shape);
+}
+
+void Window::display()
+{
+    _window.display();
+}
+
+bool Window::isOpen()
+{
+    return _window.isOpen();
 }

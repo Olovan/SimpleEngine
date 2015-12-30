@@ -7,6 +7,15 @@ Renderer::Renderer(Entity* iEntity, Vector2 iDimensions) : Component(iEntity)
 {
     dimensions = iDimensions;
     entity = iEntity;
+    shape.setSize(sf::Vector2f(dimensions.x,dimensions.y));
+}
+
+Renderer::Renderer(Entity *iEntity, Vector2 iDimensions, sf::Color iColor ) : Component(iEntity)
+{
+    dimensions = iDimensions;
+    entity = iEntity;
+    shape.setFillColor(iColor);
+    shape.setSize(sf::Vector2f(dimensions.x,dimensions.y));
 }
 
 void Renderer::start()
@@ -16,6 +25,6 @@ void Renderer::start()
 
 void Renderer::update(float deltaTime)
 {
-
+    shape.setPosition(entity->position.x, entity->position.y);
 }
 

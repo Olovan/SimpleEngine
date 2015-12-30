@@ -16,8 +16,10 @@ class Window
 
         //Methods
         void handleEvents();
+        void clear(sf::Color color);
         void draw(Renderer &renderer); //TODO create Renderable component for window to draw
         void display();
+        bool isOpen();
     protected:
     private:
         sf::RenderWindow _window;

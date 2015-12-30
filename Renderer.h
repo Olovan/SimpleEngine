@@ -10,6 +10,7 @@ class Renderer : public Component
 {
     public:
         Renderer(Entity *entity, Vector2 iDimensions );
+        Renderer(Entity *entity, Vector2 iDimensions, sf::Color iColor );
 
         Vector2 dimensions;
         sf::RectangleShape shape;
