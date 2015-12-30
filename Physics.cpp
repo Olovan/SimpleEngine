@@ -6,6 +6,12 @@ Physics::Physics(Entity* iEntity) : Component(iEntity)
     entity = iEntity;
 }
 
+Physics::Physics(Entity* iEntity, Vector2 iVelocity) : Component(iEntity)
+{
+    entity = iEntity;
+    velocity = iVelocity;
+}
+
 void Physics::start()
 {
 

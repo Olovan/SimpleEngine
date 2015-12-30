@@ -54,7 +54,6 @@ public:
     {
         std::shared_ptr<T> newComponent = std::make_shared<T>(std::forward<ARG>(args)...);
         components.push_back(newComponent);
-        newComponent.get()->start(); //Call Start Function
         return newComponent.get();
     }
 };
