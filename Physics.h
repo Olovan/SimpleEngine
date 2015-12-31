@@ -15,6 +15,7 @@ class Physics : public Component
         Vector2 velocity{0,0};
         void update(float deltaTime);
         void start();
+        std::shared_ptr<Component> clone();
     protected:
     private:
 };

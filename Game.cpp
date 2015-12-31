@@ -6,13 +6,13 @@ Game::Game()
     window.create(sf::VideoMode(800,800),"Test",sf::Style::Close);
 }
 
-Entity* Game::createEntity(Vector2 iPosition)
-{
-    auto entity = std::make_shared<Entity>(iPosition);
-    entities.insert(entity);
-    entity.get()->game = this;
-    return entity.get();
-}
+//Entity* Game::createEntity(Vector2 iPosition)
+//{
+//    auto entity = std::make_shared<Entity>(iPosition);
+//    entities.insert(entity);
+//    entity.get()->game = this;
+//    return entity.get();
+//}
 
 void Game::deleteEntity(Entity* iEntity)
 {

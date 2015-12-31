@@ -17,6 +17,7 @@ public:
     //Constructors
     Entity(Vector2 iPosition);
     Entity(float iX, float iY);
+    Entity(Entity* iEntity);
 
     //Variables
     Vector2 position;
@@ -28,6 +29,7 @@ public:
     void update(float deltaTime);
     void sendMessage(std::string iMessage);
     void addComponent(std::shared_ptr<Component> iComponent); //Use createComponent to make new components. Only use addComponent to transfer ownership of existing components. Should avoid using addComponent in most cases
+    Entity* clone(Entity* iEntity);
 
     //Templates
     template <class T> T* getComponent()

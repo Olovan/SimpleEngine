@@ -12,6 +12,17 @@ Entity::Entity(float iX, float iY)
     position.y = iY;
 }
 
+Entity::Entity(Entity* iEntity)
+{
+    position = iEntity->position;
+    for(auto component : iEntity->components)
+    {
+        auto currentComp = component.get()->clone();
+        currentComp.get()->entity = this;
+        components.push_back(currentComp);
+    }
+}
+
 void Entity::start()
 {
     for(auto component : components)

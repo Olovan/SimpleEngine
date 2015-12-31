@@ -19,3 +19,8 @@ void Component::start()
 void Component::update(float deltaTime)
 {
 }
+
+std::shared_ptr<Component> Component::clone()
+{
+    //return nullptr;
+}

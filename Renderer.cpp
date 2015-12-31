@@ -33,3 +33,7 @@ void Renderer::update(float deltaTime)
     shape.setPosition(entity->position.x, entity->position.y);
 }
 
+std::shared_ptr<Component> Renderer::clone()
+{
+    return std::make_shared<Renderer>(entity, dimensions, shape.getFillColor());
+}

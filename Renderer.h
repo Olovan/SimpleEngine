@@ -19,6 +19,7 @@ class Renderer : public Component
         sf::RectangleShape shape;
         void start();
         void update(float deltaTime);
+        std::shared_ptr<Component> clone();
     protected:
 
     private:

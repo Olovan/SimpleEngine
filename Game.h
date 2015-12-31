@@ -20,11 +20,20 @@ class Game
         std::set<std::shared_ptr<Entity>> entities; //Entities get registered here whenever createEntity() is run
         //TODO Add collider Vector
 
-        Entity* createEntity(Vector2 iPosition);
+      //  Entity* createEntity(Vector2 iPosition);
         void deleteEntity(Entity* iEntity);
         void start();
         void update();
         void handleWindowEvents();
+
+        template <class... ARG> Entity* createEntity(ARG&&... args)
+        {
+            auto entity = std::make_shared<Entity>(std::forward<ARG>(args)...);
+            entities.insert(entity);
+            entity.get()->game = this;
+            entity.get()->start();
+            return entity.get();
+        }
     protected:
     private:
 };

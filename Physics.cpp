@@ -21,3 +21,8 @@ void Physics::update(float deltaTime)
 {
     entity->position += velocity * deltaTime;
 }
+
+std::shared_ptr<Component> Physics::clone()
+{
+    return std::make_shared<Physics>(entity, velocity);
+}

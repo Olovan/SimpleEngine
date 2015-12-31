@@ -27,13 +27,17 @@ int main()
    currentEntity->createComponent<BouncingSquare>(currentEntity);
 
    currentEntity = game->createEntity(Vector2(40,678));
-   currentEntity->createComponent<Renderer>(currentEntity, Vector2(10,100), sf::Color::Cyan);
+   currentEntity->createComponent<Renderer>(currentEntity, Vector2(10,10), sf::Color::Cyan);
    currentEntity->createComponent<BouncingSquare>(currentEntity);
    currentEntity->createComponent<Physics>(currentEntity, Vector2(400,600));
+
+   Entity* currentEntity2 = game->createEntity(Vector2(400,400));
+   currentEntity2->createComponent<Duplicator>(currentEntity2, currentEntity);
 
     game->start();
     cout << "Number of Renderers: " << game->renderers.size() << endl;
     cout << "Number of Entities: " << game->entities.size() << endl;
+
 
     while (game->window.isOpen())
     {
