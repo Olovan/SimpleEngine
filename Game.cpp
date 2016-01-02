@@ -40,9 +40,12 @@ void Game::update()
 {
     //CLOCK CODE
     float deltaTime = clock.getElapsedTime().asSeconds();
+    elapsedTime += deltaTime;
     clock.restart();
+
     //WINDOW EVENT CODE
     handleWindowEvents();
+
     //RENDER
     window.clear(sf::Color::Black);
     for(auto renderer : renderers)
@@ -50,6 +53,7 @@ void Game::update()
         window.draw((*renderer).shape);
     }
     window.display();
+
     //UPDATE
     for(auto entity : entities)
     {

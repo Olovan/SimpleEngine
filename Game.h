@@ -15,12 +15,14 @@ class Game
         Game(std::string fileName);
 
         sf::Clock clock;
+        float elapsedTime;
         sf::RenderWindow window;
         std::set<Renderer*> renderers; //Renderers register themselves here in their Start() method and unregister in their destructor
         std::set<std::shared_ptr<Entity>> entities; //Entities get registered here whenever createEntity() is run
+
         //TODO Add collider Vector
 
-      //  Entity* createEntity(Vector2 iPosition);
+      //  Entity* createEntity(Vector2 iPosition); Old Entity creation method replaced by Template below
         void deleteEntity(Entity* iEntity);
         void start();
         void update();

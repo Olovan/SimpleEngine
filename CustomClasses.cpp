@@ -16,7 +16,6 @@ void BouncingSquare::start()
     phys = entity->getComponent<Physics>();
     if(phys)
     {
-        std::cout << "Physics found" << std::endl;
         speed = phys->velocity;
         if(speed.x < 0)
             speed.x = -1 * speed.x;
@@ -76,8 +75,6 @@ void Duplicator::update(float deltaTime)
     {
         Entity* newEntity = entity->game->createEntity(target);
         newEntity->position = entity->position;
-        std::cout << "Number of Renderers: " << entity->game->renderers.size() << std::endl;
-        std::cout << "Number of Entities: " << entity->game->entities.size() << std::endl;
         timePast = 0;
     }
 }

@@ -35,14 +35,26 @@ int main()
    currentEntity2->createComponent<Duplicator>(currentEntity2, currentEntity);
 
     game->start();
-    cout << "Number of Renderers: " << game->renderers.size() << endl;
-    cout << "Number of Entities: " << game->entities.size() << endl;
 
+    //DIAGNOSTICS
+    //cout << "Number of Renderers: " << game->renderers.size() << endl;
+    //cout << "Number of Entities: " << game->entities.size() << endl;
+    float frameCount = 0;
+    float counter = 0;
 
     while (game->window.isOpen())
     {
         game->update();
-       // cout << 1 / game->clock.getElapsedTime().asSeconds() << " FPS" << endl;
+
+        //DIAGNOSTICS
+        frameCount++;
+        if(game->elapsedTime - counter > 1)
+        {
+            cout << frameCount/(game->elapsedTime - counter) << " FPS" << endl;
+            counter = game->elapsedTime;
+            frameCount = 0;
+            cout << "Number of Entities: " << game->entities.size() << endl;
+        }
     }
 
     getchar();
