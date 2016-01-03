@@ -15,15 +15,17 @@ void BoxCollider::start()
 
 bool BoxCollider::checkCollision(Collider* other)
 {
-    switch(other.type)
+    switch(other->type)
     {
     case BOXCOLLIDER:
-        BoxCollider* myBox = static_cast<BoxCollider> other;
+        {
+        BoxCollider* myBox = static_cast<BoxCollider*>(other);
         if (left() < myBox->right() && right() > myBox->left() && top() < myBox->bottom() && bottom() > myBox->top())
             return true;
         else
             return false;
         break;
+        }
     case UNKNOWN:
         return false;
         break;
