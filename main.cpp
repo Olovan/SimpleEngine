@@ -15,6 +15,7 @@ int main()
 {
    //TEST CODE
    Game* game = new Game();
+
    Entity* currentEntity;
    currentEntity = game->createEntity(Vector2(645,478));
    currentEntity->createComponent<Physics>(currentEntity, Vector2(80,80));

@@ -7,6 +7,7 @@
 #include <string>
 #include "Entity.h"
 #include "Renderer.h"
+#include "Collider.h"
 
 class Game
 {
@@ -19,6 +20,7 @@ class Game
         sf::RenderWindow window;
         std::set<Renderer*> renderers; //Renderers register themselves here in their Start() method and unregister in their destructor
         std::set<std::shared_ptr<Entity>> entities; //Entities get registered here whenever createEntity() is run
+        std::set<Collider*> colliders;
 
         //TODO Add collider Vector
 
