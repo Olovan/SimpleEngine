@@ -8,8 +8,12 @@ class Collider : public Component
     public:
         Collider(Entity* iEntity);
 
+        enum ColliderType {UNKNOWN, BOXCOLLIDER} ;
+
+        ColliderType type;
+
         void start();
-        virtual bool checkCollision(Collider other);
+        virtual bool checkCollision(Collider* other);
 
     protected:
     private:

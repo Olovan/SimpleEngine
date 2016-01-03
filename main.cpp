@@ -28,7 +28,7 @@ int main()
    currentEntity->createComponent<BouncingSquare>(currentEntity);
 
    currentEntity = game->createEntity(Vector2(40,678));
-   currentEntity->createComponent<Renderer>(currentEntity, Vector2(10,10), sf::Color::Cyan);
+   currentEntity->createComponent<Renderer>(currentEntity, Vector2(5,5), sf::Color::Cyan);
    currentEntity->createComponent<BouncingSquare>(currentEntity);
    currentEntity->createComponent<Physics>(currentEntity, Vector2(400,600));
 
