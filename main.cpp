@@ -46,7 +46,7 @@ int main()
     currentEntity->createComponent<Physics>(currentEntity, Vector2(400,600));
 
     currentEntity = game->createEntity(Vector2(40,678));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(100,100), "./Pictures/1.png");
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(100,100), "./pictures/1.png");
     currentEntity->createComponent<BouncingSquare>(currentEntity);
     currentEntity->createComponent<Physics>(currentEntity, Vector2(400,600));
 

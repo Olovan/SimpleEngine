@@ -7,7 +7,7 @@ Renderer::Renderer(Entity* iEntity, Vector2 iDimensions) : Component(iEntity)
 {
     dimensions = iDimensions;
     entity = iEntity;
-    shape.setSize(sf::Vector2f(dimensions.x,dimensions.y));
+    shape.setSize(dimensions.sfml());
 }
 
 Renderer::Renderer(Entity *iEntity, Vector2 iDimensions, sf::Color iColor ) : Component(iEntity)
@@ -15,13 +15,13 @@ Renderer::Renderer(Entity *iEntity, Vector2 iDimensions, sf::Color iColor ) : Co
     dimensions = iDimensions;
     entity = iEntity;
     shape.setFillColor(iColor);
-    shape.setSize(sf::Vector2f(dimensions.x,dimensions.y));
+    shape.setSize(dimensions.sfml());
 }
 
 Renderer::Renderer(Entity *entity, Vector2 iDimensions, std::string path) : Component(entity)
 {
     dimensions = iDimensions;
-    shape.setSize(sf::Vector2f(dimensions.x,dimensions.y));
+    shape.setSize(dimensions.sfml());
     if(!texture.loadFromFile(path))
         std::cout << "Failed to load Texture" << std::endl;
     else
