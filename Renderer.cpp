@@ -18,6 +18,16 @@ Renderer::Renderer(Entity *iEntity, Vector2 iDimensions, sf::Color iColor ) : Co
     shape.setSize(sf::Vector2f(dimensions.x,dimensions.y));
 }
 
+Renderer::Renderer(Entity *entity, Vector2 iDimensions, std::string path) : Component(entity)
+{
+    dimensions = iDimensions;
+    shape.setSize(sf::Vector2f(dimensions.x,dimensions.y));
+    if(!texture.loadFromFile(path))
+        std::cout << "Failed to load Texture" << std::endl;
+    else
+        shape.setTexture(&texture,false);
+}
+
 Renderer::~Renderer() //Remove self from Game renderers set
 {
     entity->game->renderers.erase(this);

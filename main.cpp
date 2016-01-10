@@ -9,31 +9,49 @@
             #include "Renderer.h"
             #include "CustomClasses.h"
 
+#include <time.h>
+
+
+#define PARTICLES_PER_BATCH 1000
+#define PARTICLE_BATCHES 100
+
 using namespace std;
 
 int main()
 {
-   //TEST CODE
-   Game* game = new Game();
+    //TEST CODE
+    Game* game = new Game();
 
-   Entity* currentEntity;
-   currentEntity = game->createEntity(Vector2(645,478));
-   currentEntity->createComponent<Physics>(currentEntity, Vector2(80,80));
-   currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Red);
-   currentEntity->createComponent<BouncingSquare>(currentEntity);
+    srand(time(NULL));
 
-   currentEntity = game->createEntity(Vector2(200,178));
-   currentEntity->createComponent<Physics>(currentEntity, Vector2(140,280));
-   currentEntity->createComponent<Renderer>(currentEntity, Vector2(200,50), sf::Color::Yellow);
-   currentEntity->createComponent<BouncingSquare>(currentEntity);
+    Entity* currentEntity;
+    currentEntity = game->createEntity(Vector2(645,478));
+    currentEntity->createComponent<Physics>(currentEntity, Vector2(80,80));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Red);
+    currentEntity->createComponent<BouncingSquare>(currentEntity);
 
-   currentEntity = game->createEntity(Vector2(40,678));
-   currentEntity->createComponent<Renderer>(currentEntity, Vector2(5,5), sf::Color::Cyan);
-   currentEntity->createComponent<BouncingSquare>(currentEntity);
-   currentEntity->createComponent<Physics>(currentEntity, Vector2(400,600));
+    currentEntity = game->createEntity(Vector2(200,178));
+    currentEntity->createComponent<Physics>(currentEntity, Vector2(140,280));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(200,50), sf::Color::Yellow);
+    currentEntity->createComponent<BouncingSquare>(currentEntity);
 
-   Entity* currentEntity2 = game->createEntity(Vector2(400,400));
-   currentEntity2->createComponent<Duplicator>(currentEntity2, currentEntity);
+    currentEntity = game->createEntity(Vector2(40,678));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(5,5), sf::Color::Cyan);
+    currentEntity->createComponent<BouncingSquare>(currentEntity);
+    currentEntity->createComponent<Physics>(currentEntity, Vector2(400,600));
+
+    currentEntity = game->createEntity(Vector2(40,678));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(5,5), sf::Color::Cyan);
+    currentEntity->createComponent<BouncingSquare>(currentEntity);
+    currentEntity->createComponent<Physics>(currentEntity, Vector2(400,600));
+
+    currentEntity = game->createEntity(Vector2(40,678));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(100,100), "./Pictures/1.png");
+    currentEntity->createComponent<BouncingSquare>(currentEntity);
+    currentEntity->createComponent<Physics>(currentEntity, Vector2(400,600));
+
+//    Entity* currentEntity2 = game->createEntity(Vector2(400,400));
+//    currentEntity2->createComponent<Duplicator>(currentEntity2, currentEntity);
 
     game->start();
 
