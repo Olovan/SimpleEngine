@@ -13,6 +13,9 @@ class Vector2
         Vector2(sf::Vector2f iVector2);
         float x;
         float y;
+
+        sf::Vector2f sfml();
+
         Vector2 add(Vector2 other);
         Vector2 subtract(Vector2 other);
         Vector2 multiply(Vector2 other);

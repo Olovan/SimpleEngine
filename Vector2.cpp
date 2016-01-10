@@ -32,6 +32,11 @@ Vector2::Vector2(sf::Vector2f iVector2)
     y = iVector2.y;
 }
 
+sf::Vector2f Vector2::sfml()
+{
+    return sf::Vector2f(x,y);
+}
+
 Vector2 Vector2::add(Vector2 other)
 {
     return Vector2(x + other.x, y + other.y);
