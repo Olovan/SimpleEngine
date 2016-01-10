@@ -8,6 +8,7 @@
 #include "Entity.h"
 #include "Renderer.h"
 #include "Collider.h"
+#include "TextureManager.h"
 
 class Game
 {
@@ -18,6 +19,7 @@ class Game
         sf::Clock clock;
         float elapsedTime;
         sf::RenderWindow window;
+        TextureManager textureManager;
         std::set<Renderer*> renderers; //Renderers register themselves here in their Start() method and unregister in their destructor
         std::set<std::shared_ptr<Entity>> entities; //Entities get registered here whenever createEntity() is run
         std::set<Collider*> colliders;

@@ -50,6 +50,23 @@ int main()
     currentEntity->createComponent<BouncingSquare>(currentEntity);
     currentEntity->createComponent<Physics>(currentEntity, Vector2(400,600));
 
+    currentEntity = game->createEntity(Vector2(40,678));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(10,10), "./pictures/1.png");
+    currentEntity->createComponent<BouncingSquare>(currentEntity);
+    currentEntity->createComponent<Physics>(currentEntity, Vector2(200,600));
+
+    currentEntity = game->createEntity(Vector2(40,678));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(100,100), "./Pictures/1.png");
+    currentEntity->createComponent<BouncingSquare>(currentEntity);
+    currentEntity->createComponent<Physics>(currentEntity, Vector2(400,100));
+
+    currentEntity = game->createEntity(Vector2(40,678));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(100,100), "./pictuRes/1.png");
+    currentEntity->createComponent<BouncingSquare>(currentEntity);
+    currentEntity->createComponent<Physics>(currentEntity, Vector2(100,300));
+
+    cout << game->textureManager.textures.size() << " Texture detected" << endl;
+
 //    Entity* currentEntity2 = game->createEntity(Vector2(400,400));
 //    currentEntity2->createComponent<Duplicator>(currentEntity2, currentEntity);
 

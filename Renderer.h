@@ -19,7 +19,7 @@ class Renderer : public Component
 
         Vector2 dimensions;
         sf::RectangleShape shape;
-        sf::Texture texture;
+        sf::Texture* texture;
         void start();
         void update(float deltaTime);
         std::shared_ptr<Component> clone();

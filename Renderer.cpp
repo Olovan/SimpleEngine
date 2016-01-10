@@ -21,11 +21,13 @@ Renderer::Renderer(Entity *iEntity, Vector2 iDimensions, sf::Color iColor ) : Co
 Renderer::Renderer(Entity *entity, Vector2 iDimensions, std::string path) : Component(entity)
 {
     dimensions = iDimensions;
+    texture = entity->game->textureManager.getTexture(path);
     shape.setSize(dimensions.sfml());
-    if(!texture.loadFromFile(path))
-        std::cout << "Failed to load Texture" << std::endl;
+    if(texture)
+        shape.setTexture(texture,false);
     else
-        shape.setTexture(&texture,false);
+        std::cout << "Failed to load Texture" << std::endl;
+
 }
 
 Renderer::~Renderer() //Remove self from Game renderers set
