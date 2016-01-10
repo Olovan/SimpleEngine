@@ -47,5 +47,5 @@ void Renderer::update(float deltaTime)
 
 std::shared_ptr<Component> Renderer::clone()
 {
-    return std::make_shared<Renderer>(entity, dimensions, shape.getFillColor());
+    return std::make_shared<Renderer>(*this);
 }
