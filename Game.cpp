@@ -40,6 +40,8 @@ void Game::update()
 {
     //CLOCK CODE
     float deltaTime = clock.getElapsedTime().asSeconds();
+    if(deltaTime > 1/20.f) //If the game drops below 20FPS for any reason it will slow down instead of allowing such a large jump
+        deltaTime = 1/20.f;
     elapsedTime += deltaTime;
     clock.restart();
 
