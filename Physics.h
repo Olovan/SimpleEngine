@@ -1,7 +1,7 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
-#include <Component.h>
+#include "Component.h"
 #include "Vector2.h"
 
 class Entity;
