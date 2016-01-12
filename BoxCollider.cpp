@@ -3,14 +3,40 @@
 #include "Entity.h"
 #include "Game.h"
 
-BoxCollider::BoxCollider(Entity* iEntity) : Collider(iEntity)
+BoxCollider::BoxCollider(Entity* iEntity, Vector2 iDimensions, b2BodyType iBodyType) : Collider(iEntity)
 {
     type = BOXCOLLIDER;
+    size = iDimensions;
+
+    //Body Def
+    b2BodyDef bodyDef;
+    bodyDef.type = iBodyType;
+    bodyDef.position = entity->position.box2D();
+
+    //Body
+    body = entity->game->world.get()->CreateBody(&bodyDef);
+
+    //Shape
+    b2PolygonShape shape;
+    shape.SetAsBox(size.x / 2, size.y / 2);
+
+    //Fixture
+    b2FixtureDef fixtureDef;
+    fixtureDef.density = 1;
+    fixtureDef.shape = &shape;
+    body->CreateFixture(&fixtureDef);
 }
 
 void BoxCollider::start()
 {
-    entity->game->colliders.insert(this);
+
+}
+
+void BoxCollider::update(float deltaTime)
+{
+    entity->position = body->GetPosition();
+    entity->angle = body->GetAngle() * 180.0f / 3.14159265359;
+
 }
 
 bool BoxCollider::checkCollision(Collider* other)

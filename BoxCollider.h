@@ -3,15 +3,18 @@
 
 #include "Collider.h"
 #include "Vector2.h"
+#include <Box2D/Box2D.h>
 
 class BoxCollider : public Collider
 {
     public:
-        BoxCollider(Entity* iEntity);
+        BoxCollider(Entity *iEntity, Vector2 iDimensions, b2BodyType iBodyType);
 
+        b2Body* body;
         Vector2 size;
 
         void start();
+        void update(float deltaTime);
         bool checkCollision(Collider* other);
 
         float top();
