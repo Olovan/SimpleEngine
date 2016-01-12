@@ -1,7 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <Box2D/Box2D.h>
 #include <vector>
+#include <memory>
 #include <set>
 #include <SFML/Graphics.hpp>
 #include <string>
@@ -16,6 +18,7 @@ class Game
         Game();
         Game(std::string fileName);
 
+        std::unique_ptr<b2World> world;
         sf::Clock clock;
         float elapsedTime;
         sf::RenderWindow window;

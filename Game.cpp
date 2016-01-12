@@ -4,6 +4,7 @@
 Game::Game()
 {
     window.create(sf::VideoMode(800,800),"Test",sf::Style::Close);
+    world = std::unique_ptr<b2World>(new b2World(Vector2(0, 100).box2D()));
 }
 
 //Entity* Game::createEntity(Vector2 iPosition)
@@ -48,6 +49,13 @@ void Game::update()
     //WINDOW EVENT CODE
     handleWindowEvents();
 
+    //UPDATE
+    world.get()->Step(deltaTime, 8, 3);
+    for(auto entity : entities)
+    {
+        entity.get()->update(deltaTime);
+    }
+
     //RENDER
     window.clear(sf::Color::Black);
     for(auto renderer : renderers)
@@ -55,12 +63,6 @@ void Game::update()
         window.draw((*renderer).shape);
     }
     window.display();
-
-    //UPDATE
-    for(auto entity : entities)
-    {
-        entity.get()->update(deltaTime);
-    }
 }
 
 void Game::handleWindowEvents()
