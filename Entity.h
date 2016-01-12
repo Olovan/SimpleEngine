@@ -21,6 +21,7 @@ public:
 
     //Variables
     Vector2 position;
+    float angle;
     std::vector<std::shared_ptr<Component>> components;
     Game* game;
 
