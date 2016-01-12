@@ -32,9 +32,20 @@ Vector2::Vector2(sf::Vector2f iVector2)
     y = iVector2.y;
 }
 
+Vector2::Vector2(b2Vec2 iVector2)
+{
+    x = iVector2.x;
+    y = iVector2.y;
+}
+
 sf::Vector2f Vector2::sfml()
 {
     return sf::Vector2f(x,y);
+}
+
+b2Vec2 Vector2::box2D()
+{
+    return b2Vec2(x,y);
 }
 
 Vector2 Vector2::add(Vector2 other)
@@ -91,11 +102,6 @@ Vector2& Vector2::operator+=(const Vector2 &right)
 {
     (*this) = *this + right;
     return *this;
-}
-
-sf::Vector2f Vector2::sfVector2()
-{
-    return sf::Vector2f(this->x, this->y);
 }
 
 std::string Vector2::print()
