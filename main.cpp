@@ -51,16 +51,21 @@ int main()
     currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(50,50), b2_dynamicBody);
 
 
-    currentEntity = game->createEntity(Vector2(250,700));
+    currentEntity = game->createEntity(Vector2(400,700));
     currentEntity->createComponent<Renderer>(currentEntity, Vector2(500,50), sf::Color::Yellow);
     currentEntity->createComponent<BoxCollider>(currentEntity,Vector2(500,50), b2_staticBody);
 
     for(int n = 0 ; n < 100 ; n++)
     {
-        currentEntity = game->createEntity(Vector2(rand()%500,rand()%500));
+        currentEntity = game->createEntity(Vector2(rand()%500 + 150, rand()%500 + 150));
         currentEntity->createComponent<Renderer>(currentEntity, Vector2(5,5), sf::Color::Cyan);
         currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(5,5), b2_dynamicBody);
     }
+
+    currentEntity = game->createEntity(Vector2(400,700));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Green);
+    currentEntity->createComponent<BoxCollider>(currentEntity,Vector2(50,50), b2_dynamicBody);
+    currentEntity->createComponent<PlayerController>(currentEntity);
 
 
 
