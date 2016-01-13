@@ -1,10 +1,12 @@
 #include "CustomClasses.h"
 
 #include "Game.h"
+#include <iostream>
 #include "Physics.h"
 #include "Component.h"
 #include "Vector2.h"
 #include "Renderer.h"
+#include "BoxCollider.h"
 
 BouncingSquare::BouncingSquare(Entity* iEntity) : Component(iEntity)
 {
@@ -85,4 +87,47 @@ void Duplicator::start()
 std::shared_ptr<Component> Duplicator::clone()
 {
     return std::make_shared<Duplicator>(entity, target);
+}
+
+PlayerController::PlayerController(Entity* iEntity) : Component(iEntity)
+{
+
+}
+
+void PlayerController::start()
+{
+    boxCollider = entity->getComponent<BoxCollider>();
+    boxCollider->body->SetFixedRotation(true);
+}
+
+void PlayerController::update(float deltaTime)
+{
+    b2Vec2 targetVelocity = boxCollider->body->GetLinearVelocity();
+    //TODO set up controls
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    {
+        targetVelocity.x = -100;
+        boxCollider->body->SetLinearVelocity(targetVelocity);
+        //std::cout << "Left" << std::endl;
+    }
+    else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    {
+        targetVelocity.x = 100;
+        boxCollider->body->SetLinearVelocity(targetVelocity);
+        //std::cout << "Right" << boxCollider->body->GetLinearVelocity().x << std::endl;
+    }
+    else
+    {
+        targetVelocity.x = 0;
+        boxCollider->body->SetLinearVelocity(targetVelocity);
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        boxCollider->body->SetLinearVelocity(b2Vec2(targetVelocity.x, -200));
+
+}
+
+std::shared_ptr<Component> PlayerController::clone()
+{
+    return std::make_shared<PlayerController>(*this);
 }

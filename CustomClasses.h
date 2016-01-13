@@ -33,6 +33,20 @@ class Duplicator : public Component
         std::shared_ptr<Component> clone();
 };
 
+class BoxCollider;
+
+class PlayerController : public Component
+{
+    public:
+        PlayerController(Entity* iEntity);
+
+        BoxCollider* boxCollider;
+
+        void update(float deltaTime);
+        void start();
+        std::shared_ptr<Component> clone();
+};
+
 //class CLASSNAME : public Component
 //{
 //    public:
