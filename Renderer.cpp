@@ -45,7 +45,7 @@ void Renderer::start() //insert self into Game renderers set
 
 void Renderer::update(float deltaTime)
 {
-    shape.setPosition(entity->position.x, entity->position.y);
+    shape.setPosition(entity->position.x * entity->game->pixelToWorldRatio.x, entity->position.y * entity->game->pixelToWorldRatio.y);
     shape.setRotation(entity->angle);
 }
 
