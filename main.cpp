@@ -27,44 +27,44 @@ int main()
     srand(time(NULL));
 
     Entity* currentEntity;
-    currentEntity = game->createEntity(Vector2(200,400));
+    currentEntity = game->createEntity(Vector2(0,0));
 //    currentEntity->createComponent<Physics>(currentEntity, Vector2(80,80));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Red);
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(1,1), sf::Color::Red);
 //    currentEntity->createComponent<BouncingSquare>(currentEntity);
-    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(50,50), b2_dynamicBody);
+    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(1,1), b2_dynamicBody);
 
-    currentEntity = game->createEntity(Vector2(460,390));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Blue);
-    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(50,50), b2_dynamicBody);
+    currentEntity = game->createEntity(Vector2(2,2));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(1,1), sf::Color::Blue);
+    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(1,1), b2_dynamicBody);
 
-    currentEntity = game->createEntity(Vector2(220,340));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Green);
-    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(50,50), b2_dynamicBody);
-
-
-    currentEntity = game->createEntity(Vector2(260,180));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Yellow);
-    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(50,50), b2_dynamicBody);
-
-    currentEntity = game->createEntity(Vector2(110,240));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Blue);
-    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(50,50), b2_dynamicBody);
+    currentEntity = game->createEntity(Vector2(4,1));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(1,1), sf::Color::Green);
+    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(1,1), b2_dynamicBody);
 
 
-    currentEntity = game->createEntity(Vector2(400,700));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(500,50), sf::Color::Yellow);
-    currentEntity->createComponent<BoxCollider>(currentEntity,Vector2(500,50), b2_staticBody);
+    currentEntity = game->createEntity(Vector2(2,8));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(1,1), sf::Color::Yellow);
+    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(1,1), b2_dynamicBody);
+
+    currentEntity = game->createEntity(Vector2(1,0));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(1,1), sf::Color::Blue);
+    currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(1,1), b2_dynamicBody);
+
+
+    currentEntity = game->createEntity(Vector2(0,-9));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(20,1), sf::Color::Yellow);
+    currentEntity->createComponent<BoxCollider>(currentEntity,Vector2(20,1), b2_staticBody);
 
     for(int n = 0 ; n < 100 ; n++)
     {
-        currentEntity = game->createEntity(Vector2(rand()%500 + 150, rand()%500 + 150));
-        currentEntity->createComponent<Renderer>(currentEntity, Vector2(5,5), sf::Color::Cyan);
-        currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(5,5), b2_dynamicBody);
+        currentEntity = game->createEntity(Vector2(rand()%20, rand()%10));
+        currentEntity->createComponent<Renderer>(currentEntity, Vector2(.1,.1), sf::Color::Cyan);
+        currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(.1,.1), b2_dynamicBody);
     }
 
-    currentEntity = game->createEntity(Vector2(400,700));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(50,50), sf::Color::Green);
-    currentEntity->createComponent<BoxCollider>(currentEntity,Vector2(50,50), b2_dynamicBody);
+    currentEntity = game->createEntity(Vector2(3,4));
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(0.5,0.5), sf::Color::Green);
+    currentEntity->createComponent<BoxCollider>(currentEntity,Vector2(0.5,0.5), b2_dynamicBody);
     currentEntity->createComponent<PlayerController>(currentEntity);
 
 
