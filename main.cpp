@@ -51,19 +51,20 @@ int main()
     currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(1,1), b2_dynamicBody);
 
 
-    currentEntity = game->createEntity(Vector2(0,-9));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(20,1), sf::Color::Yellow);
-    currentEntity->createComponent<BoxCollider>(currentEntity,Vector2(20,1), b2_staticBody);
+    Entity* whatTheDuck;
+    whatTheDuck = game->createEntity(Vector2(0,-9.5));
+    whatTheDuck->createComponent<Renderer>(whatTheDuck, Vector2(20,1), sf::Color::Blue);
+    whatTheDuck->createComponent<BoxCollider>(whatTheDuck,Vector2(20,1), b2_staticBody);
 
     for(int n = 0 ; n < 100 ; n++)
     {
-        currentEntity = game->createEntity(Vector2(rand()%20, rand()%10));
+        currentEntity = game->createEntity(Vector2(rand()%20 - 10, rand()%10));
         currentEntity->createComponent<Renderer>(currentEntity, Vector2(.1,.1), sf::Color::Cyan);
         currentEntity->createComponent<BoxCollider>(currentEntity, Vector2(.1,.1), b2_dynamicBody);
     }
 
     currentEntity = game->createEntity(Vector2(3,4));
-    currentEntity->createComponent<Renderer>(currentEntity, Vector2(0.5,0.5), sf::Color::Green);
+    currentEntity->createComponent<Renderer>(currentEntity, Vector2(0.5,0.5), "./Pictures/1.png");
     currentEntity->createComponent<BoxCollider>(currentEntity,Vector2(0.5,0.5), b2_dynamicBody);
     currentEntity->createComponent<PlayerController>(currentEntity);
 
@@ -94,6 +95,8 @@ int main()
             counter = game->elapsedTime;
             frameCount = 0;
             cout << "Number of Entities: " << game->entities.size() << endl;
+            cout << "Floor Y Position: " << whatTheDuck->position.y << endl;
+            cout << "Player Y Position: " << currentEntity->position.y << endl;
         }
     }
 
