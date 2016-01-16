@@ -103,16 +103,17 @@ void PlayerController::start()
 void PlayerController::update(float deltaTime)
 {
     b2Vec2 targetVelocity = boxCollider->body->GetLinearVelocity();
-    //TODO set up controls
+
+    //Controls
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        targetVelocity.x = -100;
+        targetVelocity.x = -3;
         boxCollider->body->SetLinearVelocity(targetVelocity);
         //std::cout << "Left" << std::endl;
     }
     else if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        targetVelocity.x = 100;
+        targetVelocity.x = 3;
         boxCollider->body->SetLinearVelocity(targetVelocity);
         //std::cout << "Right" << boxCollider->body->GetLinearVelocity().x << std::endl;
     }
@@ -123,8 +124,12 @@ void PlayerController::update(float deltaTime)
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        boxCollider->body->SetLinearVelocity(b2Vec2(targetVelocity.x, -200));
+        boxCollider->body->SetLinearVelocity(b2Vec2(targetVelocity.x, 5));
 
+    //Camera Follow
+    sf::View view = entity->game->window.getView();
+    view.setCenter((entity->position * entity->game->pixelToWorldRatio).sfml());
+    entity->game->window.setView(view);
 }
 
 std::shared_ptr<Component> PlayerController::clone()
