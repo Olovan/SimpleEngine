@@ -128,7 +128,7 @@ void PlayerController::update(float deltaTime)
 
     //Camera Follow
     sf::View view = entity->game->window.getView();
-    view.setCenter((entity->position * entity->game->pixelToWorldRatio).sfml());
+    view.setCenter((entity->position * entity->game->sfmlWorldConversion * entity->game->pixelDensity).sfml());
     entity->game->window.setView(view);
 }
 
