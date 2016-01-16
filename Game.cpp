@@ -4,7 +4,12 @@
 Game::Game()
 {
     window.create(sf::VideoMode(800,800),"Test",sf::Style::Close);
-    world = std::unique_ptr<b2World>(new b2World(Vector2(0, 100).box2D()));
+    world = std::unique_ptr<b2World>(new b2World(Vector2(0, -10).box2D()));
+    heightToWidthRatio = window.getSize().x/window.getSize().y;
+    sf::View view(sf::Vector2f(0,0),sf::Vector2f(20*heightToWidthRatio,20));
+    window.setView(view);
+
+
 }
 
 //Entity* Game::createEntity(Vector2 iPosition)

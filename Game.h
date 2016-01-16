@@ -11,6 +11,7 @@
 #include "Renderer.h"
 #include "Collider.h"
 #include "TextureManager.h"
+#include "Vector2.h"
 
 class Game
 {
@@ -18,6 +19,9 @@ class Game
         Game();
         Game(std::string fileName);
 
+
+        Vector2 pixelToWorldRatio = Vector2(1,-1); //For converting between my world coordinates and SFML's coordinates because SFML does everything upside down on the Y axis
+        float heightToWidthRatio;
         std::unique_ptr<b2World> world;
         sf::Clock clock;
         float elapsedTime;
