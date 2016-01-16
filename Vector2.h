@@ -24,6 +24,7 @@ class Vector2
         Vector2 subtract(Vector2 other);
         Vector2 multiply(Vector2 other);
         Vector2 divide(Vector2 other);
+        Vector2 unsign();
         Vector2 operator+(const Vector2 &right);
         Vector2 operator-(const Vector2 &right);
         Vector2 operator*(const Vector2 &right);

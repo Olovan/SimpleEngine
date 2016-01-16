@@ -68,6 +68,15 @@ Vector2 Vector2::divide(Vector2 other)
     return Vector2(x / other.x, y / other.y);
 }
 
+Vector2 Vector2::unsign()
+{
+    if(this->x < 0)
+        this->x *= -1;
+    if(this->y < 0)
+        this->y *= -1;
+    return *this;
+}
+
 Vector2 Vector2::operator+(const Vector2 &right)
 {
     return this->add(right);
