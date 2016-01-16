@@ -20,7 +20,8 @@ class Game
         Game(std::string fileName);
 
 
-        Vector2 pixelToWorldRatio = Vector2(1,-1); //For converting between my world coordinates and SFML's coordinates because SFML does everything upside down on the Y axis
+        float pixelDensity = 10; //How many pixels per world unit
+        Vector2 sfmlWorldConversion = Vector2(1, -1);
         float heightToWidthRatio;
         std::unique_ptr<b2World> world;
         sf::Clock clock;
